@@ -301,6 +301,7 @@
             cmbCompany.Name = "cmbCompany";
             cmbCompany.Size = new Size(312, 33);
             cmbCompany.TabIndex = 0;
+            cmbCompany.SelectedIndexChanged += cmbCompany_SelectedIndexChanged;
             // 
             // tabAddMobile
             // 

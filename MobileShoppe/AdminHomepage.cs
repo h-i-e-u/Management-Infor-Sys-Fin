@@ -85,6 +85,9 @@ namespace MobileShoppe
             lblMsg.Text = "Company added successfully!";
             txtCompName.Clear();
             AutoGenerateCompID(); // Refresh ID
+            LoadMobileCompanies();
+            LoadCompanies();
+            LoadStockCompanies();
 
         }
 
@@ -204,12 +207,13 @@ namespace MobileShoppe
         {
             cmbStockModel.Items.Clear();
             {
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(
                     "SELECT ModelNum FROM tbl_Model M INNER JOIN tbl_Company C ON M.CompID = C.CompID WHERE C.CompName = @name",
                     conn);
                 cmd.Parameters.AddWithValue("@name", cmbStockCompany.Text);
 
-                conn.Open();
+              
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -314,6 +318,7 @@ namespace MobileShoppe
                 {
                     cmbMobileCompany.Items.Add(dr["CompName"].ToString());
                 }
+                conn.Close();
             }
         }
 
@@ -699,6 +704,11 @@ ORDER BY
             {
                 printDoc.Print();
             }
+        }
+
+        private void cmbCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
