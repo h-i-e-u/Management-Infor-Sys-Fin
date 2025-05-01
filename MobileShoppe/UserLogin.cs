@@ -1,5 +1,6 @@
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace MobileShoppe
 {
@@ -81,22 +82,49 @@ namespace MobileShoppe
                 MinimizeBox = false,
             };
 
+            //  a panel to hold the text and link
+            Panel panel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(10)
+            };
+
             TextBox txtInfo = new TextBox
             {
                 Multiline = true,
                 ReadOnly = true,
-                //ScrollBars = ScrollBars.Vertical,
                 WordWrap = true,
-                Dock = DockStyle.Fill,
+                ScrollBars = ScrollBars.Vertical,
+                Height = 200,
+                Dock = DockStyle.Top,
                 Text =
                     "Mobile Shoppe v1.0.0" + Environment.NewLine + Environment.NewLine +
                     "Developed by 2251120415 Doan Cong Hieu (solo)" + Environment.NewLine +
                     "University of Transport Ho Chi Minh City – UTH" + Environment.NewLine +
-                    "Contact: 2251120415@ut.edu.vn" + Environment.NewLine + Environment.NewLine +
+                    "Contact 2251120415@ut.edu.vn" + Environment.NewLine + Environment.NewLine +
                     "© 2025 All Rights Reserved"
             };
 
-            aboutForm.Controls.Add(txtInfo);
+            LinkLabel linkLabel = new LinkLabel
+            {
+                Text = "GitHub Repository",
+                AutoSize = true,
+                Dock = DockStyle.Bottom
+            };
+
+            linkLabel.LinkClicked += (s, args) =>
+            {
+                System.Diagnostics.Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://github.com/h-i-e-u/Management-Infor-Sys-Fin",
+                    UseShellExecute = true
+                });
+            };
+
+            panel.Controls.Add(linkLabel);
+            panel.Controls.Add(txtInfo);
+
+            aboutForm.Controls.Add(panel);
             aboutForm.ShowDialog();
         }
 
