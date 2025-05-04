@@ -48,7 +48,12 @@ Update the database connection string in `App.config` as needed:
 ### ▶ 4. Build and Run
 Press `F5` or click **Start** in Visual Studio to run the app.
 ## 📸 Vid
-**comming soon**
+[Watch the demo video](./vid-demo/vid.mp4)
+<video width="600" controls>
+  <source src="vid-demo/vid.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## 📝 Acknowledgments
 - My course instructors and anyone help me.
 - Microsoft Visual Studio and .NET Framework.
